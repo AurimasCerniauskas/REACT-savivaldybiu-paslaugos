@@ -5,6 +5,7 @@ import Home from './Components/home/Main';
 import MainSav from './Components/region/Main';
 import Nav from './Components/Nav';
 import MainServ from './Components/services/Main';
+import MainCom from './Components/comments/Main';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/'element={<Home />}></Route>
         <Route path='/region'element={<MainSav />}></Route>
         <Route path='/services'element={<MainServ />}></Route>
+        <Route path='/comments'element={<MainCom />}></Route>
       </Routes>
     </BrowserRouter>
   );

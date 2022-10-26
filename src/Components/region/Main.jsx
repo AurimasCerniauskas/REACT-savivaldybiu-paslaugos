@@ -21,6 +21,7 @@ function Main() {
       })
   }, [lastUpdate]);
 
+  // console.log(region)
   useEffect(()=>{
     if(deleteData === null){
      return;

@@ -193,3 +193,16 @@ h5 small{
      opacity: 0.7;
     }
   }
+
+  .card{
+    .card-body__main{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .card-block{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }

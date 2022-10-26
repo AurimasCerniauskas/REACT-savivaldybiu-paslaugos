@@ -40,7 +40,7 @@ function Create() {
             {
               image ? <div className="img-bin"><img src={image} alt="upload-file"></img></div> : null
             }
-            <button className="btn btn-outline-info" type="button" onClick={add}>Add</button>
+            <button className="btn btn-outline-success" type="button" onClick={add}>Add</button>
           </div>
         </div>
   )

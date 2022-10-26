@@ -9,7 +9,7 @@ function Create(){
   const add = () =>{
     setCreateData({
       title
-    })
+    });
     setTitle('');
   }
 
