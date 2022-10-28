@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Comments from '../../Contexts/Comments';
 import List from "./List";
+import {authConfig} from '../../Functions/auth';
 
 
 function Main() {
@@ -28,7 +29,7 @@ function Main() {
 
 
   useEffect(()=>{
-    axios.get("http://localhost:3005/server/all")
+    axios.get("http://localhost:3005/server/all", authConfig())
     .then(res=>{
       let arr = [];
       if (showCom === '0'){
@@ -45,7 +46,7 @@ function Main() {
     if(deletePost === null){
       return;
     }
-    axios.delete("http://localhost:3005/server/comments/"+deletePost)
+    axios.delete("http://localhost:3005/server/comments/"+deletePost, authConfig())
     .then(res =>{
       setLastUpdate(Date.now())
     })
@@ -55,7 +56,7 @@ function Main() {
       if(comment === null){
         return;
       }
-      axios.put("http://localhost:3005/server/comments/"+comment.id, comment)
+      axios.put("http://localhost:3005/server/comments/"+comment.id, comment, authConfig())
       .then(res=>
         setLastUpdate(Date.now())
         )

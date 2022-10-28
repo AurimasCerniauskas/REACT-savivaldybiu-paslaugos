@@ -52,49 +52,16 @@ function Main() {
  useEffect(()=>{
    axios.get("http://localhost:3005/server/accepted")
   .then(res =>{
-    console.log(res.data);
-    console.log([...res.data].filter(a=> a.pasname === 'Transportas'));
-    if (regionName2 === '0' && servisName2 === '0'){
+    // console.log(res.data);
+    // console.log([...res.data].filter(a=> a.savname === 'Alytus'));
     let arr = [...reList(res.data, 'savname')];
+    console.log(arr)
     arr.map(a => a[1] = reList(a[1], 'pasname'));
     setReadPost(arr)
-    } else if (regionName2){
-      let arr1 = [...res.data].filter(a=> a.savname === regionName2);
-      let arr = [...reList(arr1, 'savname')];
-      arr.map(a => a[1] = reList(a[1], 'pasname'));
-      setReadPost(arr)
-    }else if(servisName2){
-      let arr1 = [...res.data].filter(a=> a.pasname === servisName2);
-      let arr = [...reList(arr1, 'savname')];
-      arr.map(a => a[1] = reList(a[1], 'pasname'));
-      setReadPost(arr)
-    }
   })
-}, [lastUpdate, regionName2, servisName2])
-//  useEffect(()=>{
-//    axios.get("http://localhost:3005/server/accepted")
-//   .then(res =>{
-//     console.log(res.data);
-//     console.log([...res.data].filter(a=> a.pasname === 'Transportas'));
-//     if (regionName2 === '0' && servisName2 === '0'){
-//     let arr = [...reList(res.data, 'savname')];
-//     arr.map(a => a[1] = reList(a[1], 'pasname'));
-//     setReadPost(arr)
-//     } else if (regionName2){
-//       let arr1 = [...res.data].filter(a=> a.savname === regionName2);
-//       let arr = [...reList(arr1, 'savname')];
-//       arr.map(a => a[1] = reList(a[1], 'pasname'));
-//       setReadPost(arr)
-//     }else if(servisName2){
-//       let arr1 = [...res.data].filter(a=> a.pasname === servisName2);
-//       let arr = [...reList(arr1, 'savname')];
-//       arr.map(a => a[1] = reList(a[1], 'pasname'));
-//       setReadPost(arr)
-//     }
-//   })
-// }, [lastUpdate, regionName2, servisName2])
+}, [lastUpdate])
 
-console.log(readPost)
+
 
   useEffect(()=>{
     if(post === null){
@@ -119,23 +86,24 @@ console.log(readPost)
     setRegionName('');
   }
 
-  // useEffect(()=>{
-  //   if(regionName2 === '0'){
-  //       setReadPost(rp=> rp?.map(s=> ({...s, show: true})))
-  //     }else{
-  //       setReadPost(rp=> rp?.map(sav=> sav[0] === regionName2
-  //       ? {...sav, show:true} : {...sav, show:false}))
-  //     }
-  //   },[regionName2, region])
+  useEffect(()=>{
+      if(regionName2 === '0'){
+        setReadPost(rp=> rp?.map(s=> ({...s, show: true})))
+      }else{
+        // console.log(regionName2)
+        setReadPost(rp=> rp?.map(sav=> sav[0] === regionName2
+        ? {...sav, show:true} : {...sav, show:false}))
+      }
+    },[regionName2, region])
 
-  //   useEffect(()=>{
-  //     if(servisName2 === '0'){
-  //       setReadPost(rp=> rp?.map(s=> ({...s + s[1].map(sn => ({...sn, show: true}))})))
-  //     }else{
-  //       setReadPost(rp=> rp?.map(sav=> sav[1].map(sn => sn[0] === servis?.find(f=> f.id === parseInt(servisName2)).title
-  //       ? {...sn, show:true} : {...sn, show:false})))
-  //     }
-  //   },[servisName2, servis])
+    useEffect(()=>{
+      if(servisName2 === '0'){
+        setReadPost(rp=> rp?.map(s=> ({...s + s[1].map(sn => ({...sn, show: true}))})))
+      }else{
+        setReadPost(rp=> rp?.map(sav=> sav[1].map(sn => sn[0] === servis?.find(f=> f.id === parseInt(servisName2)).title
+        ? {...sn, show:true} : {...sn, show:false})))
+      }
+    },[servisName2, servis])
     // console.log(readPost)
     // readPost?.map(a=> a[1].map(b=> console.log(b)))
     // console.log(readPost?.map(a=> a[1].map(b=> ({...b}))))

@@ -38,6 +38,7 @@ function Main() {
       setCommentQty(res.data);
     })
   }, [lastUpdate]);
+  
   useEffect(()=>{
     axios.get("http://localhost:3005/server/region")
     .then(res => setRegion(res.data))
@@ -52,16 +53,28 @@ function Main() {
  useEffect(()=>{
    axios.get("http://localhost:3005/server/accepted")
   .then(res =>{
-    // console.log(res.data);
-    // console.log([...res.data].filter(a=> a.savname === 'Alytus'));
+    if (regionName2 === '0' && servisName2 === '0'){
     let arr = [...reList(res.data, 'savname')];
-    console.log(arr)
     arr.map(a => a[1] = reList(a[1], 'pasname'));
     setReadPost(arr)
+    } else if (regionName2 && servisName2 === '0'){
+      let arr1 = [...res.data].filter(a=> a.savname === regionName2);
+      let arr = [...reList(arr1, 'savname')];
+      arr.map(a => a[1] = reList(a[1], 'pasname'));
+      setReadPost(arr)
+    }else if (servisName2 && regionName2 === '0'){
+      let arr1 = [...res.data].filter(a=> a.pasname === servisName2);
+      let arr = [...reList(arr1, 'savname')];
+      arr.map(a => a[1] = reList(a[1], 'pasname'));
+      setReadPost(arr)
+    } else{
+      let arr1 = [...res.data].filter(a=> a.savname === regionName2 && a.pasname === servisName2);
+      let arr = [...reList(arr1, 'savname')];
+      arr.map(a => a[1] = reList(a[1], 'pasname'));
+      setReadPost(arr)
+    }
   })
-}, [lastUpdate])
-
-
+}, [lastUpdate, regionName2, servisName2])
 
   useEffect(()=>{
     if(post === null){
@@ -86,36 +99,6 @@ function Main() {
     setRegionName('');
   }
 
-  useEffect(()=>{
-      if(regionName2 === '0'){
-        setReadPost(rp=> rp?.map(s=> ({...s, show: true})))
-      }else{
-        // console.log(regionName2)
-        setReadPost(rp=> rp?.map(sav=> sav[0] === regionName2
-        ? {...sav, show:true} : {...sav, show:false}))
-      }
-    },[regionName2, region])
-
-    useEffect(()=>{
-      if(servisName2 === '0'){
-        setReadPost(rp=> rp?.map(s=> ({...s + s[1].map(sn => ({...sn, show: true}))})))
-      }else{
-        setReadPost(rp=> rp?.map(sav=> sav[1].map(sn => sn[0] === servis?.find(f=> f.id === parseInt(servisName2)).title
-        ? {...sn, show:true} : {...sn, show:false})))
-      }
-    },[servisName2, servis])
-    // console.log(readPost)
-    // readPost?.map(a=> a[1].map(b=> console.log(b)))
-    // console.log(readPost?.map(a=> a[1].map(b=> ({...b}))))
-    
-    // useEffect(()=>{
-    //   if(servisName2 === '0'){
-    //     setReadPost(rp=> rp?.map(s=> ({...s[1].map(sn => ({...sn, show: true}))})))
-    //   }else{
-    //     setReadPost(rp=> rp?.map(sav=> ({...sav[1].map(sn => sn[0] === servis?.find(f=> f.id === parseInt(servisName2)).title
-    //     ? {...sn, show:true} : {...sn, show:false})})))
-    //   }
-    // },[servisName2, servis])
     return(
       <Home.Provider value={{
       regionName,
@@ -178,7 +161,7 @@ function Main() {
                 <div className="col-3 mt-3">
                   <select className="form-select" value={servisName2} onChange={(e) => setServisName2(e.target.value)}>
                     <option value={0}>Visi</option>
-                   {servis?.map((g) => (<option key={g.id} value={g.id}>{g.title}</option>))}
+                   {servis?.map((g) => (<option key={g.id} value={g.title}>{g.title}</option>))}
                   </select>
                  </div>
               </div>
@@ -214,55 +197,3 @@ function Main() {
 }
 
 export default Main;
-
-
-
-
-// useEffect(()=>{
-//   if(regionName === '0'){
-//     setReadPost(rp=> rp?.map(s=> ({...s, show: true})))
-//   }else{
-//     setReadPost(rp=> rp?.map(sav=> sav[0] === region?.find(f=> f.id === parseInt(regionName)).title
-//     ? {...sav, show: true} : {...sav, show: false}))
-//   }
-// },[regionName, region])
-
-
-// readPost?.map(rp => rp.isShow ? <p key={rp.id}>{rp.post}</p> : <p key={rp.id}>Nėra administratoriaus patvirtintų komentarų</p>)
-// readPost?.find(rp => rp.isShow) ? readPost.map(r => r.isShow ? <p key={r.id}>{r.post}</p> : null) : <p>Nėra administratoriaus patviritintų komentarų</p>
-
-// ******išlistinimas
-// readPost?.length ? readPost?.map(rp => rp[2].show === true ? <ul className="list-group" key={rp[0]}>
-// <li className="list-group-item d-flex">
-//   <div>
-//   <h3>{rp[0]}</h3>
-//   <img src={[...(rp[1].map(a=> a[1][0].image))][0]} alt={rp[0]} style={{width: '150px', height: '150px'}} />
-//   </div>
-//   <ul className="d-inline w-100">
-//       {rp[1].map((a,i)=> <li className="list-group-item d-flex" key={i}>
-//         <h5 style={{width: '150px'}}>{a[0]}</h5>
-//         <ul className="list-group w-100">
-//           {a[1].map((b,i)=> <li className="list-group-item" key={i}>{b.post}</li>)}
-//         </ul>
-//         </li>)}
-//   </ul>
-// </li>
-// </ul>
-
-// *****iš filtravimo
-
-// *****useEffect dėl Relisto
-//  useEffect(()=>{
-//    axios.get("http://localhost:3005/server/accepted")
-//   .then(res =>{
-//     console.log(res.data)
-//     let arr = [...reList(res.data, 'savname')];
-//     // console.log(arr)
-//     arr.map(a => a[1] = reList(a[1], 'pasname'));
-//     setReadPost(arr.map(c => [c[0],c[1].map(b=> ({...b, show: true})), {show: true}]))
-//     // setReadPost(arr.map(c => ({...c, show: true})));
-//   })
-// }, [lastUpdate])
-
-    // setReadPost(arr.map(c => [c[0],c[1].map(b=> ({...b, show: true})), {show: true}]))
-    // setReadPost(arr.map(c => ({...c, show: true})));

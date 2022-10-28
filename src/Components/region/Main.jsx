@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import Edit from "./Edit";
+import {authConfig} from '../../Functions/auth';
 
 function Main() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
@@ -15,7 +16,7 @@ function Main() {
   const [editData, setEditData] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:3005/server/region")
+    axios.get("http://localhost:3005/server/region", authConfig())
       .then(res => {
       setRegion(res.data)
       })
@@ -26,7 +27,7 @@ function Main() {
     if(deleteData === null){
      return;
   }
-    axios.delete("http://localhost:3005/server/region/"+deleteData.id)
+    axios.delete("http://localhost:3005/server/region/"+deleteData.id, authConfig())
     .then(res =>
       setLastUpdate(Date.now())
       )
@@ -36,7 +37,7 @@ function Main() {
     if(createData === null){
       return;
     }
-    axios.post("http://localhost:3005/server/region", createData)
+    axios.post("http://localhost:3005/server/region", createData, authConfig())
     .then(res =>{
       setLastUpdate(Date.now())
     });
@@ -46,7 +47,7 @@ function Main() {
     if(editData === null){
      return;
   }
-    axios.put("http://localhost:3005/server/region/"+editData.id, editData)
+    axios.put("http://localhost:3005/server/region/"+editData.id, editData, authConfig())
     .then(res =>
       setLastUpdate(Date.now())
       )
