@@ -11,13 +11,14 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 function App() {
+  const [loged, setLoged] = useState(false);
   return (
     <BrowserRouter>
-    <Nav />
+    <Nav status={loged} />
       <Routes>
         <Route path='/'element={<Home />}></Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/logout" element={<LogoutPage />} />
+        <Route path="/login" element={<LoginPage setLoged={setLoged} />} />
+        <Route path="/logout" element={<LogoutPage setLoged={setLoged} />} />
         <Route path='/region'element={<RequireAuth role='admin'><MainSav /></RequireAuth>}></Route>
         <Route path='/services'element={<RequireAuth role='admin'><MainServ /></RequireAuth>}></Route>
         <Route path='/comments'element={<RequireAuth role='admin'><MainCom /></RequireAuth>}></Route>
@@ -30,7 +31,6 @@ function RequireAuth({ children, role }) {
   useEffect(() => {
     axios.get('http://localhost:3005/login-check?role=' + role, authConfig())
       .then(res => {
-        // console.log(res.data)
         if ('ok' === res.data.msg) {
           setView(children);
         } else {
@@ -43,11 +43,7 @@ function RequireAuth({ children, role }) {
   return view;
 }
 
-
-
-
-
-function LoginPage() {
+function LoginPage({setLoged}) {
   const navigate = useNavigate();
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
@@ -55,11 +51,10 @@ function LoginPage() {
   const doLogin = () => {
     axios.post('http://localhost:3005/login', { user, pass })
       .then(res => {
-        // console.log(res, user);
         if ('ok' === res.data.msg) {
           login(res.data.key);
-          // console.log(res.data)
           navigate('/', { replace: true });
+          setLoged(true);
         }
       })
   }
@@ -89,11 +84,10 @@ function LoginPage() {
   );
 }
 
-function LogoutPage() {
-
+function LogoutPage({setLoged}) {
     logout();
-
-  return (
+    setLoged(false);
+    return (
     <Navigate to="/login" replace />
   )
 }

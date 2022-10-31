@@ -1,6 +1,7 @@
-import {NavLink} from "react-router-dom"
+import NavLog from "./navbar/NavLog";
+import NavNotLog from "./navbar/NavNotLog";
 
-function Nav(){
+function Nav({status}){
   return(
     <div className="container">
       <div className="row">
@@ -13,12 +14,9 @@ function Nav(){
              </button>
               <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                <NavLink to="/" end className={({isActive}) => isActive ? 'nav-item nav-link active' : "nav-item nav-link"}>Home</NavLink>
-                <NavLink to="/region" className={({isActive}) => isActive ? 'nav-item nav-link active' : "nav-item nav-link"}>Regions</NavLink>
-                <NavLink to="/services" className={({isActive}) => isActive ? 'nav-item nav-link active' : "nav-item nav-link"}>Services</NavLink>
-                <NavLink to="/comments" className={({isActive}) => isActive ? 'nav-item nav-link active' : "nav-item nav-link"}>Comments</NavLink>
-                <NavLink to="/login" className="nav-link">Login</NavLink>
-                <NavLink to="/logout" className="nav-link">Logout</NavLink>
+                  {
+                    status ? <NavLog /> : <NavNotLog />
+                  }
                 </div>
               </div>
               </div>
