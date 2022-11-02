@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import Comments from "../../Contexts/Comments";
+import formatDate from "../../Functions/formatDate";
 
 function Line({line}){
   const {setDeletePost, setComment} = useContext(Comments);
@@ -11,10 +12,15 @@ function Line({line}){
   }
 
   return(
-    <li className="list-group-item mb-3">
-      <div className="line">
-        <div className="line__content">
-          <p>{line.post}</p>
+    <li className="list-group-item border-0">
+      <div className="card m-4">
+        <div  className="card-header d-flex justify-content-between">
+          <h5>{line.name}</h5>
+          <span>{formatDate(line.cdate)}</span>
+        </div>
+
+        <div className="card-body">
+          <p className="m-0">{line.post}</p>
         </div>
         <div className="line__buttons">
           <button type="button" className="btn btn-outline-primary" onClick={changeSt} style={{display: line.isShow ? "none" : "inline-block"}}>Patvirtinti</button>
