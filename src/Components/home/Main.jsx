@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import Home from "../../Contexts/Home";
+import formatDate from "../../Functions/formatDate";
 
 
 function Main() {
@@ -87,6 +88,9 @@ function Main() {
 
 
   const addComment = () =>{
+    if (comment === '' || servisName=== 0 || regionName === 0 || name===''){
+      return;
+    }
     setPost({
       post: comment,
       pasl_id: parseInt(servisName),
@@ -111,7 +115,7 @@ function Main() {
           <div className="card m-4">
             <h3 className="card-header">Rašyti komentarą</h3>
             <div className="card-body  card-body__main">
-              <div className="col-3 offset-1 mb-3">
+              <div className="col-2 offset-1 mb-3">
                 <label className="form-label">Pasirinkti savivaldybę</label>
                 <select value={regionName} className="form-control" onChange={e => setRegionName(e.target.value)}>
                 <option value={0}></option>
@@ -120,7 +124,7 @@ function Main() {
                 }
                 </select>
                 </div>
-                <div className="col-3 offset-1 mb-3">
+                <div className="col-2 offset-1 mb-3">
                 <label className="form-label">Viešosios paslaugos</label>
                 <select value={servisName} className="form-control" onChange={e=>setServisName(e.target.value)}>
                   <option value={0}></option>
@@ -129,16 +133,16 @@ function Main() {
                   }
                 </select>
               </div>
-              <div className="col-3 offset-1 mb-3">
+              <div className="col-2 offset-1 mb-3">
                 <label className="form-label">Vardas</label>
                 <input className="form-control" type="text" value={name} onChange={e=>setName(e.target.value)}/>
               </div>
-              <div className="col-11 offset-1 mb-3">
+              <div className="col-8 offset-1 mb-3">
                 <label className="form-label">Komentaras</label>
                 <textarea value={comment} className="form-control" onChange={e=>setComment(e.target.value)}></textarea>
               </div>
             </div>
-            <button type="button" className="btn btn-primary col-2 mb-3 offset-9" onClick={addComment}>Siųsti</button>
+            <button type="button" className="btn btn-primary col-2 mb-3 offset-7" onClick={addComment}>Siųsti</button>
           </div>
         </div>
       </div>
@@ -183,7 +187,17 @@ function Main() {
                             {rp[1].map((a,i)=> a.show=== true ? <li className="list-group-item d-flex" key={i}>
                               <h5 style={{width: '150px'}}>{a[0]}</h5>
                               <ul className="list-group w-100">
-                                {a[1].map((b,i)=> <li className="list-group-item" key={i}>{b.post}</li>)}
+                                {a[1].map((b,i)=> <li className="list-group-item" key={i}>
+                                  <div className="card m-4">
+                                    <div className="card-header d-flex justify-content-between">
+                                      <h5>{b.name}</h5>
+                                      <span>{formatDate(b.cdate)}</span>
+                                    </div>
+                                    <div className="card-body">
+                                    {b.post}
+                                    </div>
+                                  </div>
+                                  </li>)}
                               </ul>
                               </li> : null)}
                         </ul>

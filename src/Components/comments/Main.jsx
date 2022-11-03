@@ -26,8 +26,6 @@ function Main() {
     return [...d];
 }
 
-
-
   useEffect(()=>{
     axios.get("http://localhost:3005/server/all", authConfig())
     .then(res=>{
