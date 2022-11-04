@@ -71,11 +71,11 @@ function Main() {
       <div className="row">
         <div className="col-12">
             <h2 style={{textAlign: 'center'}}>Vartotojų komentarai, pasiūlymai</h2>
-            <div className="filter__block d-flex mt-5">
-              <div className="col-3 mt-3 offset-4">
+            <div className="filter__block d-flex mt-3 offset-sm-1 offset-md-0 justify-content-center flex-wrap">
+              <div className="col-6 col-md-3 m-2 offset-md-4">
                 <label className="form-label"><h4>Komentarų filtras</h4></label>
               </div>
-              <div className="col-3 mt-3">
+              <div className="col-6 col-md-3 m-2">
                 <select className="form-select" value={showCom} onChange={e => setShowCom(e.target.value)}>
                   <option value={0}>Visi</option>
                   <option value={1}>Nepatvirtinti</option>

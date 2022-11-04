@@ -111,12 +111,12 @@ function Main() {
     }}>
     <div className="container">
       <div className="row">
-        <div className="col-12">
+        <div className="col-sm-12">
           <div className="card m-4">
             <h3 className="card-header">Rašyti komentarą</h3>
             <div className="card-body  card-body__main">
-              <div className="col-2 offset-1 mb-3">
-                <label className="form-label">Pasirinkti savivaldybę</label>
+              <div className="col-8 col-sm-8 col-lg-2 offset-1 mb-3">
+                <label className="form-label">Savivaldybės</label>
                 <select value={regionName} className="form-control" onChange={e => setRegionName(e.target.value)}>
                 <option value={0}></option>
                 {
@@ -124,8 +124,8 @@ function Main() {
                 }
                 </select>
                 </div>
-                <div className="col-2 offset-1 mb-3">
-                <label className="form-label">Viešosios paslaugos</label>
+                <div className="col-8 col-sm-8 col-lg-2 offset-1 mb-3">
+                <label className="form-label">Paslaugos</label>
                 <select value={servisName} className="form-control" onChange={e=>setServisName(e.target.value)}>
                   <option value={0}></option>
                   {
@@ -133,7 +133,7 @@ function Main() {
                   }
                 </select>
               </div>
-              <div className="col-2 offset-1 mb-3">
+              <div className="col-8 col-sm-8 col-lg-2 offset-1 mb-3">
                 <label className="form-label">Vardas</label>
                 <input className="form-control" type="text" value={name} onChange={e=>setName(e.target.value)}/>
               </div>
@@ -142,55 +142,59 @@ function Main() {
                 <textarea value={comment} className="form-control" onChange={e=>setComment(e.target.value)}></textarea>
               </div>
             </div>
-            <button type="button" className="btn btn-primary col-2 mb-3 offset-7" onClick={addComment}>Siųsti</button>
+            <button type="button" className="btn btn-primary col-3 col-sm-3 col-lg-2 mb-3 offset-6 offset-sm-6 offset-lg-7" onClick={addComment}>Siųsti</button>
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col-12">
           <div className="card m-4">
-            <div className="card-header d-flex justify-content-between">
+            <div className="card-header d-md-flex justify-content-between">
               <h3>Vartotojų komentarai, pasiūlymai</h3>
-              <h5 className="p-2">Viso komentarų {commentQty?.length}</h5>
+              <h6 className="p-2">Viso komentarų {commentQty?.length}</h6>
             </div>
             <div className="container">
-              <div className="row">
-                <div className="col-2 mt-3">
-                  <label className="form-label">Savivaldybės</label>
-                </div>
-                <div className="col-3 mt-3">
+              <div className="d-md-flex justify-content-around">
+                <div className="d-flex mt-3 col-12 col-md-4">
+                  <div className="col-6 col-sm-6 col-lg-4">
+                  <label className="form-label mt-1">Savivaldybės</label>
+                  </div>
+                  <div className="col-6">
                   <select className="form-select" value={regionName2} onChange={(e) => setRegionName2(e.target.value)}>
                     <option value={0}>Visi</option>
                    {region?.map((g) => (<option key={g.id} value={g.title}>{g.title}</option>))}
                   </select>
-                 </div>
-                 <div className="col-2 mt-3 offset-1">
-                  <label className="form-label">Paslaugos</label>
+                  </div>
                 </div>
-                <div className="col-3 mt-3">
+                <div className="d-flex mt-3 col-12 col-md-4">
+                  <div className="ml-3 col-6 col-sm-6 col-lg-4">
+                  <label className="form-label mt-1">Paslaugos</label>
+                  </div>
+                  <div className="col-6">
                   <select className="form-select" value={servisName2} onChange={(e) => setServisName2(e.target.value)}>
                     <option value={0}>Visi</option>
                    {servis?.map((g) => (<option key={g.id} value={g.title}>{g.title}</option>))}
                   </select>
-                 </div>
+                   </div>
+                </div>
               </div>
             </div>
             <div className="card-body">
                   {
                     readPost?.length ? readPost?.map(rp => rp.show === true ? <ul className="list-group" key={rp[0]}>
-                      <li className="list-group-item d-flex">
+                      <li className="list-group-item d-lg-flex">
                         <div>
                         <h3>{rp[0]}</h3>
                         <img src={[...(rp[1].map(a=> a[1][0].image))][0]} alt={rp[0]} style={{width: '150px', height: '150px'}} />
                         </div>
                         <ul className="d-inline w-100">
-                            {rp[1].map((a,i)=> a.show=== true ? <li className="list-group-item d-flex" key={i}>
+                            {rp[1].map((a,i)=> a.show=== true ? <li className="list-group-item d-md-flex" key={i}>
                               <h5 style={{width: '150px'}}>{a[0]}</h5>
                               <ul className="list-group w-100">
-                                {a[1].map((b,i)=> <li className="list-group-item" key={i}>
-                                  <div className="card m-4">
-                                    <div className="card-header d-flex justify-content-between">
-                                      <h5>{b.name}</h5>
+                                {a[1].map((b,i)=> <li className="list-group-item border-0" key={i}>
+                                  <div className="card">
+                                    <div className="card-header d-md-flex justify-content-between">
+                                      <p className="m-0"><b>{b.name}</b></p>
                                       <span>{formatDate(b.cdate)}</span>
                                     </div>
                                     <div className="card-body">

@@ -13,9 +13,9 @@ function Line({line}){
 
   return(
     <li className="list-group-item border-0">
-      <div className="card m-4">
-        <div  className="card-header d-flex justify-content-between">
-          <h5>{line.name}</h5>
+      <div className="card m-2">
+        <div  className="card-header d-md-flex justify-content-between">
+          <p className="m-0"><b>{line.name}</b></p>
           <span>{formatDate(line.cdate)}</span>
         </div>
 

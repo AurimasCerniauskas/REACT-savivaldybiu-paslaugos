@@ -64,7 +64,7 @@ function Main() {
     }}>
       <div className='container'>
         <div className='row'>
-          <div className='col-4'>
+          <div className='col-9 col-lg-4'>
             <Create />
           </div>
           <div className='col-8'>

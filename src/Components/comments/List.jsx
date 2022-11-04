@@ -6,7 +6,7 @@ function List(){
   const {readPost} = useContext(Comments);
   return(
     <div className="card-block">
-    <div className="card m-4 col-10 offset-1">
+    <div className="card m-4 col-10 offset-md-1">
       <div className="card-body">
         <ul className="list-group">
       {

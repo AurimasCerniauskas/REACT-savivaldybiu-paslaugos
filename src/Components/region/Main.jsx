@@ -65,10 +65,10 @@ function Main() {
     }}>
       <div className="container">
         <div className="row region">
-          <div className="col-4 region__create">
+          <div className="col-9 col-lg-4 offset-sm-1 offset-lg-0 region__create">
             <Create />
           </div>
-          <div className="col-7 offset-1 region__list">
+          <div className="col-9 col-lg-7 offset-1 region__list">
             <List />
           </div>
         </div>
