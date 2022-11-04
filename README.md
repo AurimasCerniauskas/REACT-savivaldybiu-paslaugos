@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
+![Security Status](https://img.shields.io/security-headers?label=Security&url=https%3A%2F%2Fgithub.com&style=flat-square)
+![Gluten Status](https://img.shields.io/badge/Gluten-Free-green.svg)
+![Eco Status](https://img.shields.io/badge/ECO-Friendly-green.svg)
+[![Discord](https://discord.com/api/guilds/571393319201144843/widget.png)](https://discord.gg/dRwW4rw)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React App: Bandomasis egz.4 Savivaldybių paslaugos
 
-## Available Scripts
+_reactjs project_
 
-In the project directory, you can run:
+This project is for educational porpuses only. Pull request are welcome, but priority for project authors! Thank you for your cooperation!
 
-### `npm start`
+Site published at: https://aurimascerniauskas.github.io/REACT-savivaldybiu-paslaugos/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Užduotis:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Sukurti internetinę platformą viešojo sektoriaus teikiamų paslaugų tobulinimui, naudojant Node.js, MySql ir REACT, turinčią viešą ir administravimo sritis. Viešoje srityje kiekvienas norintis (registracija nebūtina) gali pateikti savo įdėją ar parašyti atsiliepimą apie bet kurios viešosios paslaugos sukūrimą/patobulinimą.
 
-### `npm test`
+### Vieša sritis
+Kiekvienas vartotojas viešoje srityje turi turėti galimybę:
+1. Pasirinkti savivaldybę iš administravimo srityje sukurto sąrašo.
+2. Pasirinkti viešųjų paslaugų sritį iš administravimo srityje sukurto sąrašo.
+3. Parašyti savo komentarą pasirinktai sričiai ir savivaldybei. Komentaras turi būti
+surištas ir su sritim ir su savivaldybe.
+4. Matyti visus anksčiau kitų vartotojų ir savo parašytus komentarus.
+5. Turėti galimybę komentarus filtruoti arba pagal sritį arba pagal savivaldybę
+arba pagal abu kartu.
+6. Komentarai viešoje srityje yra rodomi tik tada, kai jie yra patvirtinti
+administratoriaus.
+7. Atskirai yra rodomas visų pasiūlymų/komentarų skaičius.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Administravimo sritis
+Administracinėje dalyje, svetainės administratorius turi turėti galimybę:
+1. Sukurti savivaldybes (Vilniaus m., Kauno m., Švenčionėlių raj. ir t.t.) Kuriant sritį
+administratorius turi pridėti savivaldybės ar rajono herbo paveiksliuką.
+2. Sukurti viešųjų paslaugų sritis (medicina, kultūra, transportas ir t.t.).
+3. Matyti ir patvirtinti arba ištrinti gyventojų pasiūlymus.
+4. Į administracinę sritį gali patekti tik vartotojai turintys ‘admin’ rolę.
 
-### `npm run build`
+## Project features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   Github pages
+-   React js
+-   Node.js
+-   MySQL
+-   responsive design
+-   CRUD
+-   other good/better/best (choose wisely) stuff
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Authors
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Aurimas: [Github](https://github.com/AurimasCerniauskas)
