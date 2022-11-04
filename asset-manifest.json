@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/REACT-savivaldybiu-paslaugos/static/css/main.321bd4f3.css",
+    "main.js": "/REACT-savivaldybiu-paslaugos/static/js/main.6430988c.js",
+    "index.html": "/REACT-savivaldybiu-paslaugos/index.html",
+    "main.321bd4f3.css.map": "/REACT-savivaldybiu-paslaugos/static/css/main.321bd4f3.css.map",
+    "main.6430988c.js.map": "/REACT-savivaldybiu-paslaugos/static/js/main.6430988c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.321bd4f3.css",
+    "static/js/main.6430988c.js"
+  ]
+}
