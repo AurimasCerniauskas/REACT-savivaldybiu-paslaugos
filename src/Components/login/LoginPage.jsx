@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import {login} from '../../Functions/auth';
 
-function LoginPage({setLoged}) {
+function LoginPage({setLogged}) {
   const navigate = useNavigate();
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
@@ -13,8 +13,8 @@ function LoginPage({setLoged}) {
       .then(res => {
         if ('ok' === res.data.msg) {
           login(res.data.key);
+          setLogged(localStorage.setItem('isLogged', true));
           navigate('/', { replace: true });
-          setLoged(true);
         }
       })
   }
